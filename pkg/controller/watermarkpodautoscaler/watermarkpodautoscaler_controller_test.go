@@ -8,7 +8,7 @@ package watermarkpodautoscaler
 import (
 	"context"
 	"fmt"
-	assert2 "github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/assert"
 	"reflect"
 	"testing"
 	"time"
@@ -16,8 +16,7 @@ import (
 	"github.com/DataDog/watermarkpodautoscaler/pkg/apis/datadoghq/v1alpha1"
 	"github.com/DataDog/watermarkpodautoscaler/pkg/apis/datadoghq/v1alpha1/test"
 
-	logr "github.com/go-logr/logr"
-	"github.com/magiconair/properties/assert"
+	"github.com/go-logr/logr"
 	"github.com/stretchr/testify/require"
 	appsv1 "k8s.io/api/apps/v1"
 	autoscalingv1 "k8s.io/api/autoscaling/v1"
@@ -913,7 +912,7 @@ func TestDefaultWatermarkPodAutoscaler(t *testing.T) {
 			if err != nil {
 				assert.Equal(t, err.Error(), tt.err.Error())
 			} else {
-				assert2.Nil(t, tt.err)
+				assert.Nil(t, tt.err)
 			}
 		})
 	}

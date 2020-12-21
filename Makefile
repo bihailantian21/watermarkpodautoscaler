@@ -3,7 +3,7 @@ ARTIFACT=controller
 ARTIFACT_PLUGIN=kubectl-${PROJECT_NAME}
 
 # 0.0 shouldn't clobber any released builds
-TAG?=v0.2.0
+TAG?=v0.3.0
 DOCKER_REGISTRY=
 PREFIX?=${DOCKER_REGISTRY}datadog/${PROJECT_NAME}
 SOURCEDIR = "."
@@ -83,7 +83,7 @@ patch-crds: bin/yq generate-crds
 	hack/patch-crds.sh
 
 update-codegen:
-    hack/update-codegen.sh
+	hack/update-codegen.sh
 
 pre-release: bin/yq
 	hack/pre-release.sh $(VERSION)
@@ -109,6 +109,6 @@ bin/openapi-gen:
 	go build -o bin/openapi-gen k8s.io/kube-openapi/cmd/openapi-gen
 
 bin/yq:
-	go build -o bin/yq ./vendor/github.com/mikefarah/yq/v3
+	./hack/install-yq.sh
 
 .PHONY: vendor build push clean test e2e validate local-load install-tools verify-license list pre-release generate-olm
