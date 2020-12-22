@@ -8,10 +8,11 @@ package watermarkpodautoscaler
 import (
 	"context"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"reflect"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 
 	"github.com/DataDog/watermarkpodautoscaler/pkg/apis/datadoghq/v1alpha1"
 	"github.com/DataDog/watermarkpodautoscaler/pkg/apis/datadoghq/v1alpha1/test"
@@ -870,11 +871,11 @@ func TestDefaultWatermarkPodAutoscaler(t *testing.T) {
 			wpaName: "test-1",
 			wpaNs:   "default",
 			spec: &v1alpha1.WatermarkPodAutoscalerSpec{
-				ScaleTargetRef: testCrossVersionObjectRef,
-				MinReplicas:    getReplicas(4),
-				MaxReplicas:    7,
+				ScaleTargetRef:     testCrossVersionObjectRef,
+				MinReplicas:        getReplicas(4),
+				MaxReplicas:        7,
 				ScaleUpLimitFactor: *resource.NewQuantity(101, resource.DecimalSI),
-				Tolerance:      *resource.NewMilliQuantity(50, resource.DecimalSI),
+				Tolerance:          *resource.NewMilliQuantity(50, resource.DecimalSI),
 			},
 			err: fmt.Errorf("scaleuplimitfactor should be set as a quantity between 0 and 100, currently set to : 101, which could yield a 101%% growth"),
 		},
@@ -883,12 +884,12 @@ func TestDefaultWatermarkPodAutoscaler(t *testing.T) {
 			wpaName: "test-1",
 			wpaNs:   "default",
 			spec: &v1alpha1.WatermarkPodAutoscalerSpec{
-				ScaleTargetRef: testCrossVersionObjectRef,
-				MinReplicas:    getReplicas(4),
-				MaxReplicas:    7,
-				ScaleUpLimitFactor: *resource.NewQuantity(34, resource.DecimalSI),
+				ScaleTargetRef:       testCrossVersionObjectRef,
+				MinReplicas:          getReplicas(4),
+				MaxReplicas:          7,
+				ScaleUpLimitFactor:   *resource.NewQuantity(34, resource.DecimalSI),
 				ScaleDownLimitFactor: *resource.NewQuantity(134, resource.DecimalSI),
-				Tolerance:      *resource.NewMilliQuantity(50, resource.DecimalSI),
+				Tolerance:            *resource.NewMilliQuantity(50, resource.DecimalSI),
 			},
 			err: fmt.Errorf("scaledownlimitfactor should be set as a quantity between 0 and 100 (exc.), currently set to : 134, which could yield a 134%% decrease"),
 		},

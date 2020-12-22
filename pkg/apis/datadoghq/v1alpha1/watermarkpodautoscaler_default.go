@@ -7,6 +7,7 @@ package v1alpha1
 
 import (
 	"fmt"
+
 	"k8s.io/apimachinery/pkg/api/resource"
 )
 
@@ -35,7 +36,7 @@ func DefaultWatermarkPodAutoscaler(wpa *WatermarkPodAutoscaler) *WatermarkPodAut
 		defaultWPA.Spec.Tolerance = *resource.NewMilliQuantity(defaultTolerance, resource.DecimalSI)
 	}
 	if wpa.Spec.ScaleUpLimitFactor.MilliValue() == 0 {
-		defaultWPA.Spec.ScaleUpLimitFactor =  *resource.NewQuantity(defaultScaleUpLimitFactor, resource.DecimalSI)
+		defaultWPA.Spec.ScaleUpLimitFactor = *resource.NewQuantity(defaultScaleUpLimitFactor, resource.DecimalSI)
 	}
 	if wpa.Spec.ScaleDownLimitFactor.MilliValue() == 0 {
 		defaultWPA.Spec.ScaleDownLimitFactor = *resource.NewQuantity(defaultScaleDownLimitFactor, resource.DecimalSI)
