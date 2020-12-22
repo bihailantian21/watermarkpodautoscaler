@@ -91,13 +91,11 @@ spec:
                         - type: integer
                         - type: string
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       lowWatermark:
                         anyOf:
                         - type: integer
                         - type: string
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       metricName:
                         description: metricName is the name of the metric in question.
                         type: string
@@ -163,13 +161,11 @@ spec:
                         - type: integer
                         - type: string
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       lowWatermark:
                         anyOf:
                         - type: integer
                         - type: string
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       metricSelector:
                         description: metricSelector is used to identify a specific
                           time series within a given metric.
@@ -231,7 +227,6 @@ spec:
                 - type
                 type: object
               type: array
-              x-kubernetes-list-type: set
             minReplicas:
               format: int32
               minimum: 1
@@ -248,7 +243,6 @@ spec:
                 event. Parameter used to be a float, in order to support the transition
                 seamlessly, we validate that it is ]0;100[ in the code.
               pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-              x-kubernetes-int-or-string: true
             scaleTargetRef:
               description: 'part of HorizontalPodAutoscalerSpec, see comments in the
                 k8s-1.10.8 repo: staging/src/k8s.io/api/autoscaling/v1/types.go reference
@@ -277,7 +271,6 @@ spec:
                 event. Parameter used to be a float, in order to support the transition
                 seamlessly, we validate that it is ]0;100] in the code.
               pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-              x-kubernetes-int-or-string: true
             tolerance:
               anyOf:
               - type: integer
@@ -285,7 +278,6 @@ spec:
               description: Parameter used to be a float, in order to support the transition
                 seamlessly, we validate that it is ]0;1[ in the code.
               pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-              x-kubernetes-int-or-string: true
             upscaleForbiddenWindowSeconds:
               format: int32
               minimum: 1
@@ -326,7 +318,6 @@ spec:
                 - type
                 type: object
               type: array
-              x-kubernetes-list-type: set
             currentMetrics:
               items:
                 description: MetricStatus describes the last-read state of a single
@@ -346,7 +337,6 @@ spec:
                         description: currentAverageValue is the current value of metric
                           averaged over autoscaled pods.
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       currentValue:
                         anyOf:
                         - type: integer
@@ -354,7 +344,6 @@ spec:
                         description: currentValue is the current value of the metric
                           (as a quantity)
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       metricName:
                         description: metricName is the name of a metric used for autoscaling
                           in metric system.
@@ -420,7 +409,6 @@ spec:
                         description: averageValue is the current value of the average
                           of the metric across all relevant pods (as a quantity)
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       currentValue:
                         anyOf:
                         - type: integer
@@ -428,7 +416,6 @@ spec:
                         description: currentValue is the current value of the metric
                           (as a quantity).
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       metricName:
                         description: metricName is the name of the metric in question.
                         type: string
@@ -516,7 +503,6 @@ spec:
                         description: currentAverageValue is the current value of the
                           average of the metric across all relevant pods (as a quantity)
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       metricName:
                         description: metricName is the name of the metric in question
                         type: string
@@ -600,7 +586,6 @@ spec:
                           similar to the "pods" metric source type. It will always
                           be set, regardless of the corresponding metric specification.
                         pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
-                        x-kubernetes-int-or-string: true
                       name:
                         description: name is the name of the resource in question.
                         type: string
@@ -617,7 +602,6 @@ spec:
                 - type
                 type: object
               type: array
-              x-kubernetes-list-type: set
             currentReplicas:
               format: int32
               type: integer
